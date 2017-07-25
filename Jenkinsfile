@@ -3,7 +3,16 @@ pipeline {
   stages {
     stage('stage1') {
       steps {
-        sh 'echo toto'
+        parallel(
+          "stage1": {
+            sh 'echo toto'
+            
+          },
+          "": {
+            sh 'ls -la'
+            
+          }
+        )
       }
     }
   }
